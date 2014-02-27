@@ -1,0 +1,175 @@
+/* Scss Document */
+body {
+	@include background-image(radial-gradient($bodyGradient1, $bodyGradient2));
+	background: $bodySolid;
+	color: $greyDarkest;
+	min-height: 760px;
+	font:{
+		family: $sans;
+		weight: 400;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font:{
+		family: $cursive;
+		weight: 400;
+	}
+
+}
+
+p {
+	margin: 0.75em 0;
+	display: block;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+a {
+    @include single-transition(all, 0.5s);
+	background: rgba(255,255,255,0.5);
+	border-radius: 0.2em;
+    color: inherit;
+	padding: 0 0.1em;
+    text-decoration: none;
+    text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
+    
+    &:hover,
+    &:focus {
+	    background: rgba(255,255,255,1);
+	    text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
+    }
+}
+
+.fallback-message {
+	p {
+		margin-bottom: 10px;
+	}
+}
+
+.impress-supported {
+	.fallback-message {
+		display: none;
+	}
+}
+
+.step {
+	@include box-sizing(border-box);
+	color: $greyDarker;
+	display: block;
+	letter-spacing: -1px;
+	line-height: 36px;
+	padding: 20px 20px;
+	text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+	width: 900px;
+	font: {
+		size: 30px;
+		family: $sans;
+	}
+	p {
+		padding-bottom: 1.5;
+		display: block;
+	}
+}
+
+.step {
+	@include single-transition(opacity, 1s);
+}
+.step:not(.active) {
+	opacity: 0 !important; 
+}
+
+.slide {
+	@include single-box-shadow($darkEdge,0,0,10px);
+	background: $white;
+	border: solid 1px $grey;
+	border-radius: 5px;
+	color: $greyDarker;
+	display: block;
+	height: 650px;
+	letter-spacing: -1px;
+	line-height: 36px;
+	padding: 30px  30px;
+	text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+	width: 900px;
+	font: {
+		size: 30px;
+		family: 'Open Sans', Arial, sans-serif;
+	}
+	p {
+		margin-bottom: 1.5;
+		display: block;
+	}
+	q {
+		display: block;
+		font-size: 50px;
+		line-height: 75px;
+		margin-top: 100px;
+		strong {
+			white-space: nowrap;
+		}
+	}
+}
+
+#overview {
+	display: none;
+}
+
+.impress-on-overview {
+	.step {
+		cursor: pointer;
+		opacity: 1;
+	}
+}
+
+.hint {
+    background: rgba(0,0,0,0.5);
+    bottom: 200px;
+    color: #EEE;
+    display: none;
+    font-size: 50px;
+    left: 0;
+    opacity: 0;
+    padding: 20px;
+	position: fixed;
+    right: 0;
+    text-align: center;
+    -moz-transform:    translateY(400px);
+    -ms-transform:     translateY(400px);
+    -o-transform:      translateY(400px);
+    -webkit-transform: translateY(400px);
+    transform:         translateY(400px);
+    -moz-transition:    opacity 1s,    -moz-transform 0.5s 1s;
+    -ms-transition:     opacity 1s,     -ms-transform 0.5s 1s;
+    -o-transition:      opacity 1s,      -o-transform 0.5s 1s;
+    -webkit-transition: opacity 1s, -webkit-transform 0.5s 1s;
+    transition:         opacity 1s,         transform 0.5s 1s;
+    z-index: 100;
+
+}
+
+.impress-enabled .hint { display: block; }
+.impress-on-bored .hint {
+    opacity: 1;
+    -moz-transform:    translateY(0px);
+    -ms-transform:     translateY(0px);
+    -o-transform:      translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform:         translateY(0px);
+    -moz-transition:    opacity 1s 5s,    -moz-transform 0.5s 4.5s;
+    -ms-transition:     opacity 1s 5s,     -ms-transform 0.5s 4.5s;
+    -o-transition:      opacity 1s 5s,      -o-transform 0.5s 4.5s;
+    -webkit-transition: opacity 1s 5s, -webkit-transform 0.5s 4.5s;
+    transition:         opacity 1s 5s,         transform 0.5s 4.5s;
+}
+
+.impress-enabled          { pointer-events: none; }
+.impress-enabled #impress { pointer-events: auto; }
